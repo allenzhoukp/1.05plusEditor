@@ -1,0 +1,657 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>850</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>850</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>850</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>三国群英传2 1.05+ 修改器</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="title">
+       <string>EXE文件</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLineEdit" name="inputFileBox"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="selectPathBtn">
+           <property name="text">
+            <string>选择路径...</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="loadFileBtn">
+           <property name="text">
+            <string>载入</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="saveFileBtn">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>保存</string>
+           </property>
+           <property name="autoDefault">
+            <bool>false</bool>
+           </property>
+           <property name="default">
+            <bool>false</bool>
+           </property>
+           <property name="flat">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="exeTypeLabel">
+         <property name="text">
+          <string>EXE未打开</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QGroupBox" name="groupBox_2">
+        <property name="title">
+         <string>本体修改内容</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_2">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="toolTip">
+              <string>&lt;p&gt;设置体力上限。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>1. HP上限</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="b1_1_box"/>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="toolTip">
+              <string>&lt;p&gt;设置技力上限。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>MP上限</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="b1_2_box"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="toolTip">
+              <string>&lt;p&gt;设置电脑出兵时一支队伍中的武将数量上限。分为4种情况，可以分别设置。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>2. AI每支队伍出征人数上限</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="gridLayout">
+             <item row="0" column="3">
+              <widget class="QLineEdit" name="b2_1_box"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="label_6">
+               <property name="text">
+                <string>单城两队进攻</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="4">
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>占空城</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="0">
+              <widget class="QLabel" name="label_4">
+               <property name="text">
+                <string>单城一队进攻</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="5">
+              <widget class="QLineEdit" name="b2_2_box"/>
+             </item>
+             <item row="1" column="3">
+              <widget class="QLineEdit" name="b2_3_box"/>
+             </item>
+             <item row="1" column="4">
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>双城夹攻</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="5">
+              <widget class="QLineEdit" name="b2_4_box"/>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="b4_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;修复原版减缓集气和快速集气（初中高）这6个军师技无效的问题。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>4. 修复减缓快速无效</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="b5_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;修复恢复技力（中）和恢复技力（初）速度完全相同的问题。恢复技力（中）的速度将被正确地设置为1回合恢复1点技力。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>5. 修复恢复技力（中）</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="b7_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;恶性BUG修复。原版1.05如果在野外触发战斗，战胜并招降电脑武将，但该队伍的出发城池为空城，则这些被招降的武将会消失；如果单击该城池，则可能会跳出游戏。修复该BUG后，这些武将会正确地进城。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>7. 修复空城招降</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="b8_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用后，在32位色环境下也可以窗口化，无需（也不应）设置16位色。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>8. 32位窗口化</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="b9_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;可以播放游戏路径下MP3文件夹内，MP3格式的音乐。使用后，设定选项中调整音效音量等价于调整主音量，但可单独调整音乐音量。Steam版不播放MP3格式的音乐，因此不适用。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>9. 播放MP3格式音乐</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="b10_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;原版下，如果在游戏进行到一半时，点“回主选单”回到开始界面，再选择时期开一局新的进程，则无法搜出上一个进程中已经被搜出的唯一物品。选中后，这些物品在任意方式开始的进程中，都可以被且仅被搜出一次。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>10. 修复唯一物品重开游戏时无法搜到</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="b12_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用后，可以使用S#调整游戏速度，如输入键盘上S2即为2倍速。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>12. 使用S#调整游戏速度</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="b13_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;方便MOD制作者：和脚本（SO文件）相关的一系列支持性修改，可以支持内存操作、伏兵高级兵、INI调用脚本等。Steam版暂不适用。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>13-15. 脚本支持</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="b16_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;方便MOD制作者：防止部队武将数大于城市容纳数而城市为空城时，选择武将进城的bug。原版由于最低城容和队伍人数上限均为5人，不存在此问题，制作MOD时可能会碰到。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>16. 空城进入城内超员弹出BUG修复</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_13">
+           <property name="text">
+            <string>鼠标移到文本上可查看说明。</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_3">
+        <property name="title">
+         <string>附加内容（可选功能）</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QCheckBox" name="a2_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;该补丁修复了INI读取血缘武将的BUG，使得无论血缘武将的Sequence在什么位置，都会被正确读取。使用该补丁后，原版未被正确读取的血缘将会被修复，曹操将可以正确带出曹丕，马腾将可以正确带出马超，以此类推。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A2. 修复原版血缘读取部分失效的BUG</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a3_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用后，电脑方默认将不会斩首任何武将，包括电脑-电脑交战和电脑-玩家交战。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A3. 电脑默认不斩将</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <widget class="QLabel" name="label_12">
+             <property name="toolTip">
+              <string>&lt;p&gt;电脑对玩家被俘武将的特殊对待。如果选择【跟随默认】，则电脑方对于玩家被俘武将的处置方式将和电脑-电脑交战时相同；如果选择【斩首】或【投降】，则玩家武将被俘时必定被斩首或必定投降对方。Steam版暂不适用。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>    玩家武将被俘时总是：</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="a3_togg_1">
+             <property name="text">
+              <string>跟随默认</string>
+             </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="a3_togg_2">
+             <property name="text">
+              <string>斩首</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="a3_togg_3">
+             <property name="text">
+              <string>投降</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLabel" name="label_8">
+             <property name="toolTip">
+              <string>&lt;p&gt;设置等级上限。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>A4. 等级上限</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="a4_box"/>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QLabel" name="label_9">
+             <property name="toolTip">
+              <string>&lt;p&gt;原版下，电脑和电脑交战时，有一定概率产生“假打”，即双方没有真正交战，只是损失一点血/蓝/兵后各自平局退回，如果为攻城则平局导致攻城失败。与之相对的为“真打”，即失败的一方全员低血。如需不假打，将概率设为1分之一，或连续0次假打后必定真打。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>A5. 真打概率</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="a5_1_box">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>25</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_10">
+             <property name="toolTip">
+              <string>&lt;p&gt;原版下，电脑和电脑交战时，有一定概率产生“假打”，即双方没有真正交战，只是损失一点血/蓝/兵后各自平局退回，如果为攻城则平局导致攻城失败。与之相对的为“真打”，即失败的一方全员低血。如需不假打，将概率设为1分之一，或连续0次假打后必定真打。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>分之一,同队伍连续假打</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="a5_2_box">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>25</width>
+               <height>16777215</height>
+              </size>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_11">
+             <property name="toolTip">
+              <string>&lt;p&gt;原版下，电脑和电脑交战时，有一定概率产生“假打”，即双方没有真正交战，只是损失一点血/蓝/兵后各自平局退回，如果为攻城则平局导致攻城失败。与之相对的为“真打”，即失败的一方全员低血。如需不假打，将概率设为1分之一，或连续0次假打后必定真打。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>次后必真打</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item alignment="Qt::AlignRight">
+          <widget class="QCheckBox" name="a5_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;选中此项则电脑之间必定假打。&lt;p&gt;</string>
+           </property>
+           <property name="text">
+            <string>必定假打</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a6_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用本补丁后，玩家低级别的武将，会和电脑武将一起和玩家高级别的武将拉平级别差。例如，玩家有一名10级武将和若干2级武将，使用本补丁后，2级武将会在内政时自动升级，缩小和10级的差距。注意：该补丁的作用不是随着时间流逝级别自动上升；升级速度由玩家最高级别的9位武将+君主的级别决定。因此如果所有人等级相同，则级别不会发生任何变化。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A6. 玩家武将自动升级</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a7_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用本补丁后，在武将属性界面，将完整显示该武将的所有未学习技能及其学习等级。文字为竖排显示。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A7. 显示技能等级（竖排）</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a8_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;原版下，在使用逼近敌军或偷袭敌军时，使用特定的阵型和武将位置，可能导致敌我方的部分士兵/武将重叠在一起（即“错位”）。此时他们进入无敌状态。使用本项后，将会避免这种错位现象。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A8. 修复逼近敌军、偷袭敌军等造成错位</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a9_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;所谓“君主招降BUG”是指：当一支A势力的队伍处于“骑城头”（出城后右键取消目的地）状态时，可以直接将该部队更改目的进城，无视队伍下方的城池属于何种势力。一般情况下城池仍归属原势力B。如果这支A势力的队伍中包括君主A本人，那么进城后A君主会“夺取”原城池的所属势力，城池将归属于A。这种操作可以被用于强行“招降”敌方武将。因为君主的存在是必要条件，因此被称为“君主招降”。打上本补丁后，此法将失效；A势力队伍将无法进入B势力所属城池。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A9. 修正君主招降</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a10_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;原版下攻破城关，当城内武将有人投降时，败军将会逃向我方（或攻城方）城池；无人投降时，则会逃向原势力城池。使用本补丁后，败军将总是逃向原势力城池，无论是否有人投降。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A10. 战后敌军不会逃向我方城池</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a11_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;原版1.0开局时军师由TimesX.ini中指定的军师决定。原版1.05下，开局时军师会被自动设定为城内智力最高者。本补丁会取消该功能，使得军师仍为TimesX.ini中指定的军师（原版下，总是和主将为同一人）。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A11. 设置开局时电脑不会重设军师</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a12_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用后，可以在大地图上按P键暂停时间流逝，同时仍可以操作部队。按O键恢复时间流逝。注意：当大地图时间冻结下发生空城招降时，应避免立即操作即将立刻占领空城的部队，否则会产生BUG。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A12. 大地图时间冻结</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a13_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;修正后，必须重新玩过的剧本才会有效果。指定了情义君主的武将，当其情义君主未灭亡时，只有其情义君主才可以搜索到该武将；情义君主招降该武将必定成功，其他势力招降该武将的难度增大。当情义君主变成了普通武将或被斩首之后，其他势力还是可以往常搜索，并且有机会加入该武将；情义君主归降的新君主招降和搜索该武将时必定成功。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A13. 修复情义君主设定（LOYALKING）</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a14_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用该补丁后，大地图上各个点的地形将会正确地随季节变化，夏、秋、冬三季会分别读取CHINAMAP2.MSK-CHINAMAP4.MSK三个地形图。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A14. 大地图地形随季节变化</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a15_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用本补丁后，窗口的实际内容的比例将被锁定为4:3。可以使用本补丁以使游戏画面占据屏幕更大，也有防止对窗口大小误操作的效果。目前，窗口大小的锁定总是以长边为准，因此请按住左/右边界往左/右拖动以调整窗口大小。按住上/下边界往上/下拖动将无效。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A15. 锁定窗口长宽比</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a19_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用后，将会把大地图上的【设定选项】替换为【保存进度】，此时的存档被称为【大地图存档】。保存的大地图存档在使用同一EXE读取时：（1）会进入内政，但所有的内政自治、搜索、开发选项保持上一次过年内政结束时的情形，因此如果已经进行过自治则无法再自治，已经搜索/开发过的武将无法再次搜索/开发；不过，可以使用物品；此时如果进行保存，得到的存档仍然为大地图存档；（2）结束内政进入大地图时，将恢复到保存时的大地图时间。保存的大地图存档在使用不同EXE读取时，将会参考下面的偏移量；两EXE的偏移量相同时，则仍可读取大地图存档，不同则进入大地图时，时间将还原为年初。</string>
+           </property>
+           <property name="text">
+            <string>A19. 大地图随时存档</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_6">
+           <item>
+            <widget class="QLabel" name="a19_label">
+             <property name="toolTip">
+              <string>&lt;p&gt;默认为0x30。除非有特殊要求，建议不做改动。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>  （高级）指定大地图时间在存档中的偏移：0x</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="a19_box">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>30</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a20_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;战场右键敌方头像查看属性。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A20. 战场右键敌方头像查看属性</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a21_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用该补丁后，在以下情形下按H可以查看当前武将属性：战斗画面；招降/斩首/释放画面；使用物品画面；征兵画面。根据西凉的提醒：其它时候别按H，以免出错。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A21. 按H显示武将属性（战场/征兵/招降/使用物品）</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a22_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用后，大地图将不再显示“西元XXX年XX月”，而是改为显示“XXX年XX月XX日”。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A22. 大地图显示年月日</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item alignment="Qt::AlignRight">
+     <widget class="QPushButton" name="pushButton">
+      <property name="text">
+       <string>LICENSE</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>850</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
