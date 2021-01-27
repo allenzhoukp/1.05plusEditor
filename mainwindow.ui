@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>850</width>
-    <height>800</height>
+    <width>860</width>
+    <height>791</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>850</width>
-    <height>800</height>
+    <width>860</width>
+    <height>791</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>850</width>
-    <height>800</height>
+    <width>860</width>
+    <height>791</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -299,6 +299,13 @@
           <widget class="QLabel" name="label_13">
            <property name="text">
             <string>鼠标移到文本上可查看说明。</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_14">
+           <property name="text">
+            <string>修改有风险，请注意备份。保存时备份文件会自动生成。</string>
            </property>
           </widget>
          </item>
@@ -634,7 +641,7 @@
     <item alignment="Qt::AlignRight">
      <widget class="QPushButton" name="pushButton">
       <property name="text">
-       <string>LICENSE</string>
+       <string>协议</string>
       </property>
      </widget>
     </item>
@@ -645,7 +652,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>850</width>
+     <width>860</width>
      <height>26</height>
     </rect>
    </property>
