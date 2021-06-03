@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
     content = nullptr;
     file_length = 0;
     filepath= "/";
+
+    this->limitWindow = new LimitWindow();
 }
 
 MainWindow::~MainWindow()
@@ -163,6 +165,9 @@ void MainWindow::on_loadFileBtn_clicked()
         this->ui->a20_chkbox->setEnabled(true);
         this->ui->a21_chkbox->setEnabled(true);
         this->ui->a22_chkbox->setEnabled(true);
+        this->ui->a23_chkbox->setEnabled(true);
+        this->ui->a24_chkbox->setEnabled(true);
+        // this->ui->limit_window_btn->setEnabled(true);
         break;
 
     case ExeType::steam_simp105:
@@ -210,11 +215,19 @@ void MainWindow::on_loadFileBtn_clicked()
         this->ui->a21_chkbox->setEnabled(false);
         this->ui->a22_chkbox->setChecked(false);
         this->ui->a22_chkbox->setEnabled(false);
+        this->ui->a23_chkbox->setChecked(false);
+        this->ui->a23_chkbox->setEnabled(false);
+        this->ui->a24_chkbox->setChecked(false);
+        this->ui->a24_chkbox->setEnabled(false);
+        this->ui->limit_window_btn->setEnabled(false);
         break;
     }
 
     // load all status
     this->load_status();
+
+    // enable forced override button
+    this->ui->btn_forced_override->setEnabled(true);
 }
 
 int MainWindow::load_value_status(const Update& update) {
@@ -229,21 +242,49 @@ int MainWindow::load_value_status(const Update& update) {
         value = *(int *)(content + address);
     else value = -1;
 
+    if (update.value_added > 0)
+        value -= update.value_added;
+
     return value;
 }
 
-bool MainWindow::load_toggle_status(const QVector<Update>& updates) {
+int MainWindow::load_toggle_status(const QVector<Update>& updates) {
+    int outcome = 1;
     for (Update update : updates) {
         if (!(update.isCheatCode)) {
             int address = update.address;
             QVector<unsigned char> bytes = update.bytes;
             for (int i = 0; i < bytes.size(); i++) {
                 if (bytes[i] != *(unsigned char *)(content + address + i))
-                    return false;
+                    outcome = -1;
             }
         }
     }
-    return true;
+    if (outcome == 1) return outcome;
+    for (Update update : updates) {
+        if (!(update.isCheatCode)) {
+            int address = update.address;
+            QVector<unsigned char> bytes = update.origins;
+            for (int i = 0; i < bytes.size(); i++) {
+                if (bytes[i] != *(unsigned char *)(content + address + i))
+                    outcome = 0;
+            }
+        }
+    }
+
+    return outcome;
+}
+
+void MainWindow::load_toggle_box(QAbstractButton* box, const QVector<Update>& updates) {
+    int outcome = load_toggle_status(updates);
+    if (outcome == 0)
+        box->setEnabled(false);
+    else
+        box->setEnabled(true);
+    if (outcome == 1)
+        box->setChecked(true);
+    else
+        box->setChecked(false);
 }
 
 void MainWindow::load_status() {
@@ -270,54 +311,55 @@ void MainWindow::load_status() {
 
         } else if (key == "b4_chkbox") {
             if (this->ui->b4_chkbox->isEnabled())
-                this->ui->b4_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->b4_chkbox, updates);
 
         } else if (key == "b5_chkbox") {
             if (this->ui->b5_chkbox->isEnabled())
-                this->ui->b5_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->b5_chkbox, updates);
 
         } else if (key == "b7_chkbox") {
             if (this->ui->b7_chkbox->isEnabled())
-                this->ui->b7_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->b7_chkbox, updates);
 
         } else if (key == "b8_chkbox") {
             if (this->ui->b8_chkbox->isEnabled())
-                this->ui->b8_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->b8_chkbox, updates);
 
         } else if (key == "b9_chkbox") {
             if (this->ui->b9_chkbox->isEnabled())
-                this->ui->b9_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->b9_chkbox, updates);
 
         } else if (key == "b10_chkbox") {
             if (this->ui->b10_chkbox->isEnabled())
-                this->ui->b10_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->b10_chkbox, updates);
 
         } else if (key == "b12_chkbox") {
             if (this->ui->b12_chkbox->isEnabled())
-                this->ui->b12_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->b12_chkbox, updates);
 
         } else if (key == "b13_chkbox") {
             if (this->ui->b13_chkbox->isEnabled())
-                this->ui->b13_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->b13_chkbox, updates);
 
         } else if (key == "b16_chkbox") {
             if (this->ui->b16_chkbox->isEnabled())
-                this->ui->b16_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->b16_chkbox, updates);
 
         } else if (key == "a2_chkbox") {
             if (this->ui->a2_chkbox->isEnabled())
-                this->ui->a2_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a2_chkbox, updates);
 
         } else if (key == "a3_chkbox") {
             if (this->ui->a3_chkbox->isEnabled())
-                this->ui->a3_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a3_chkbox, updates);
 
         } else if (key == "a3_togg_2") {
             if (this->ui->a3_togg_2->isEnabled())
-                this->ui->a3_togg_2->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a3_togg_2, updates);
+
         } else if (key == "a3_togg_3") {
             if (this->ui->a3_togg_3->isEnabled())
-                this->ui->a3_togg_3->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a3_togg_3, updates);
 
         } else if (key == "a4_box") {
             this->ui->a4_box->setText(QString::number(load_value_status(firstUpdate)));
@@ -330,70 +372,94 @@ void MainWindow::load_status() {
 
         } else if (key == "a5_chkbox") {
             if (this->ui->a5_chkbox->isEnabled())
-                this->ui->a5_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a5_chkbox, updates);
 
         } else if (key == "a6_chkbox") {
             if (this->ui->a6_chkbox->isEnabled())
-                this->ui->a6_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a6_chkbox, updates);
 
         } else if (key == "a7_chkbox") {
             if (this->ui->a7_chkbox->isEnabled())
-                this->ui->a7_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a7_chkbox, updates);
 
         } else if (key == "a8_chkbox") {
             if (this->ui->a8_chkbox->isEnabled())
-                this->ui->a8_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a8_chkbox, updates);
 
         } else if (key == "a9_chkbox") {
             if (this->ui->a9_chkbox->isEnabled())
-                this->ui->a9_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a9_chkbox, updates);
 
         } else if (key == "a10_chkbox") {
             if (this->ui->a10_chkbox->isEnabled())
-                this->ui->a10_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a10_chkbox, updates);
 
         } else if (key == "a11_chkbox") {
             if (this->ui->a11_chkbox->isEnabled())
-                this->ui->a11_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a11_chkbox, updates);
 
         } else if (key == "a12_chkbox") {
             if (this->ui->a12_chkbox->isEnabled())
-                this->ui->a12_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a12_chkbox, updates);
 
         } else if (key == "a13_chkbox") {
             if (this->ui->a13_chkbox->isEnabled())
-                this->ui->a13_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a13_chkbox, updates);
 
         } else if (key == "a14_chkbox") {
             if (this->ui->a14_chkbox->isEnabled())
-                this->ui->a14_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a14_chkbox, updates);
 
         } else if (key == "a15_chkbox") {
             if (this->ui->a15_chkbox->isEnabled())
-                this->ui->a15_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a15_chkbox, updates);
 
         } else if (key == "a19_chkbox") {
             if (this->ui->a19_chkbox->isEnabled()){
-                this->ui->a19_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a19_chkbox, updates);
 
-                if (this->ui->a19_chkbox->isChecked()) {
+                if (this->ui->a19_chkbox->isChecked() && this->ui->a19_chkbox->isEnabled()) {
                     char offset = *(this->content + 0x3157F);
                     this->ui->a19_box->setText(QString::number(offset, 16));
                 }
             }
+            this->ui->a19_box->setEnabled(this->ui->a19_chkbox->isEnabled());
 
         } else if (key == "a20_chkbox") {
             if (this->ui->a20_chkbox->isEnabled())
-                this->ui->a20_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a20_chkbox, updates);
 
         } else if (key == "a21_chkbox") {
             if (this->ui->a21_chkbox->isEnabled())
-                this->ui->a21_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a21_chkbox, updates);
 
         } else if (key == "a22_chkbox") {
             if (this->ui->a22_chkbox->isEnabled())
-                this->ui->a22_chkbox->setChecked(load_toggle_status(updates));
+                load_toggle_box(this->ui->a22_chkbox, updates);
+
+        } else if (key == "a23_chkbox") {
+            if (this->ui->a23_chkbox->isEnabled())
+                load_toggle_box(this->ui->a23_chkbox, updates);
+
+        } else if (key == "a24_chkbox") {
+            if (this->ui->a24_chkbox->isEnabled())
+                load_toggle_box(this->ui->a24_chkbox, updates);
         }
+    }
+    if (this->ui->a3_togg_1->isChecked() || this->ui->a3_togg_2->isChecked() || this->ui->a3_togg_3->isChecked()) {
+        this->ui->a3_togg_1->setEnabled(true);
+        this->ui->a3_togg_2->setEnabled(true);
+        this->ui->a3_togg_3->setEnabled(true);
+    }
+    if (this->ui->a3_togg_2->isEnabled() && this->ui->a3_togg_3->isEnabled() &&
+        !this->ui->a3_togg_2->isChecked() && !this->ui->a3_togg_3->isChecked()) {
+        this->ui->a3_togg_1->setEnabled(true);
+        this->ui->a3_togg_1->setChecked(true);
+    }
+
+    if (this->ui->limit_window_btn->isEnabled()) {
+        this->limitWindow->loadContent(this->content);
+        this->limitWindow->onStatusLoad(this, contentloader, this->exe_type);
     }
 }
 
@@ -401,16 +467,19 @@ void MainWindow::save_value_status(const QVector<Update>& updates, int value){
     for (Update update : updates) {
         int address = update.address;
         int length = update.length;
+        int neu = value;
+        if (update.value_added > 0)
+            neu += update.value_added;
         if (length == 1) {
-            if (value > 0x7F)
+            if (neu > 0x7F)
                 throw QString("超出上限：最高127");
-            *(char *)(this->content + address) = (char) value;
+            *(char *)(this->content + address) = (char) neu;
         } else if (length == 2) {
-            if (value > 0x7FFF)
+            if (neu > 0x7FFF)
                 throw QString("超出上限：最高32767");
-            *(short *)(this->content + address) = (short) value;
+            *(short *)(this->content + address) = (short) neu;
         } else if (length == 4)
-            *(int *)(this->content + address) = value;
+            *(int *)(this->content + address) = neu;
     }
 }
 
@@ -432,7 +501,7 @@ void MainWindow::save_toggle_status(const QVector<Update>& updates, bool toggled
             for (int i = 0; i < update.bytes.size(); i++) {
                 if (toggled)
                     *(unsigned char *)(this->content + address + i) = update.bytes[i];
-                else
+                else if (!isForcedOverride)
                     *(unsigned char *)(this->content + address + i) = update.origins[i];
             }
         }
@@ -442,7 +511,7 @@ void MainWindow::save_toggle_status(const QVector<Update>& updates, bool toggled
 void MainWindow::on_saveFileBtn_clicked()
 {
     // write back-up file
-    QByteArray bt_bak = (this->filepath + ".bak").toLocal8Bit();
+    QByteArray bt_bak = (this->filepath.left(this->filepath.length() - 4) + ".bak.exe").toLocal8Bit();
     char* file_name_bak = bt_bak.data();
     FILE* bak = fopen(file_name_bak, "wb");
     if (bak != nullptr) {
@@ -460,58 +529,58 @@ void MainWindow::on_saveFileBtn_clicked()
                 continue;
             QVector<Update> updates = it.value().content[this->exe_type];
 
-            if (key == "b1_1_box") {
+            if (key == "b1_1_box" && this->ui->b1_1_box->isEnabled()) {
                 save_value_status(updates, this->ui->b1_1_box->text());
-            } else if (key == "b1_2_box") {
+            } else if (key == "b1_2_box" && this->ui->b1_2_box->isEnabled()) {
                 save_value_status(updates, this->ui->b1_2_box->text());
 
-            } else if (key == "b2_1_box") {
+            } else if (key == "b2_1_box" && this->ui->b2_1_box->isEnabled()) {
                 save_value_status(updates, this->ui->b2_1_box->text());
-            } else if (key == "b2_2_box") {
+            } else if (key == "b2_2_box" && this->ui->b2_2_box->isEnabled()) {
                 save_value_status(updates, this->ui->b2_2_box->text());
-            } else if (key == "b2_3_box") {
+            } else if (key == "b2_3_box" && this->ui->b2_3_box->isEnabled()) {
                 save_value_status(updates, this->ui->b2_3_box->text());
-            } else if (key == "b2_4_box") {
+            } else if (key == "b2_4_box" && this->ui->b2_4_box->isEnabled()) {
                 save_value_status(updates, this->ui->b2_4_box->text());
 
-            } else if (key == "b4_chkbox") {
+            } else if (key == "b4_chkbox" && this->ui->b4_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->b4_chkbox->isChecked());
 
-            } else if (key == "b5_chkbox") {
+            } else if (key == "b5_chkbox" && this->ui->b5_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->b5_chkbox->isChecked());
 
-            } else if (key == "b7_chkbox") {
+            } else if (key == "b7_chkbox" && this->ui->b7_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->b7_chkbox->isChecked());
 
-            } else if (key == "b8_chkbox") {
+            } else if (key == "b8_chkbox" && this->ui->b8_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->b8_chkbox->isChecked());
 
-            } else if (key == "b9_chkbox") {
+            } else if (key == "b9_chkbox" && this->ui->b9_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->b9_chkbox->isChecked());
 
-            } else if (key == "b10_chkbox") {
+            } else if (key == "b10_chkbox" && this->ui->b10_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->b10_chkbox->isChecked());
 
-            } else if (key == "b12_chkbox") {
+            } else if (key == "b12_chkbox" && this->ui->b12_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->b12_chkbox->isChecked());
 
-            } else if (key == "b13_chkbox") {
+            } else if (key == "b13_chkbox" && this->ui->b13_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->b13_chkbox->isChecked());
 
-            } else if (key == "b16_chkbox") {
+            } else if (key == "b16_chkbox" && this->ui->b16_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->b16_chkbox->isChecked());
 
-            } else if (key == "a2_chkbox") {
+            } else if (key == "a2_chkbox" && this->ui->a2_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a2_chkbox->isChecked());
 
-            } else if (key == "a3_chkbox") {
+            } else if (key == "a3_chkbox" && this->ui->a3_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a3_chkbox->isChecked());
-            } else if (key == "a3_togg_2" && !this->ui->a3_togg_3->isChecked()) {
+            } else if (key == "a3_togg_2" && !this->ui->a3_togg_3->isChecked() && this->ui->a3_togg_2->isEnabled()) {
                 save_toggle_status(updates, this->ui->a3_togg_2->isChecked());
-            } else if (key == "a3_togg_3" && !this->ui->a3_togg_2->isChecked()) {
+            } else if (key == "a3_togg_3" && !this->ui->a3_togg_2->isChecked() && this->ui->a3_togg_3->isEnabled()) {
                 save_toggle_status(updates, this->ui->a3_togg_3->isChecked());
 
-            } else if (key == "a4_box") {
+            } else if (key == "a4_box" && this->ui->a4_box->isEnabled()) {
                 bool ok;
                 int value = this->ui->a4_box->text().toInt(&ok);
                 if (!ok)
@@ -531,46 +600,46 @@ void MainWindow::on_saveFileBtn_clicked()
                         *(int *)(this->content + address) = value;
                 }
 
-            } else if (key == "a5_1_box") {
+            } else if (key == "a5_1_box" && this->ui->a5_1_box->isEnabled()) {
                 save_value_status(updates, this->ui->a5_1_box->text().toInt());
 
-            } else if (key == "a5_2_box") {
+            } else if (key == "a5_2_box" && this->ui->a5_2_box->isEnabled()) {
                 save_value_status(updates, this->ui->a5_2_box->text().toInt());
 
-            } else if (key == "a5_chkbox") {
+            } else if (key == "a5_chkbox" && this->ui->a5_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a5_chkbox->isChecked());
 
-            } else if (key == "a6_chkbox") {
+            } else if (key == "a6_chkbox" && this->ui->a6_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a6_chkbox->isChecked());
 
-            } else if (key == "a7_chkbox") {
+            } else if (key == "a7_chkbox" && this->ui->a7_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a7_chkbox->isChecked());
 
-            } else if (key == "a8_chkbox") {
+            } else if (key == "a8_chkbox" && this->ui->a8_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a8_chkbox->isChecked());
 
-            } else if (key == "a9_chkbox") {
+            } else if (key == "a9_chkbox" && this->ui->a9_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a9_chkbox->isChecked());
 
-            } else if (key == "a10_chkbox") {
+            } else if (key == "a10_chkbox" && this->ui->a10_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a10_chkbox->isChecked());
 
-            } else if (key == "a11_chkbox") {
+            } else if (key == "a11_chkbox" && this->ui->a11_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a11_chkbox->isChecked());
 
-            } else if (key == "a12_chkbox") {
+            } else if (key == "a12_chkbox" && this->ui->a12_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a12_chkbox->isChecked());
 
-            } else if (key == "a13_chkbox") {
+            } else if (key == "a13_chkbox" && this->ui->a13_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a13_chkbox->isChecked());
 
-            } else if (key == "a14_chkbox") {
+            } else if (key == "a14_chkbox" && this->ui->a14_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a14_chkbox->isChecked());
 
-            } else if (key == "a15_chkbox") {
+            } else if (key == "a15_chkbox" && this->ui->a15_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a15_chkbox->isChecked());
 
-            } else if (key == "a19_chkbox") {
+            } else if (key == "a19_chkbox" && this->ui->a19_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a19_chkbox->isChecked());
 
                 if (this->ui->a19_chkbox->isChecked()) {
@@ -585,17 +654,27 @@ void MainWindow::on_saveFileBtn_clicked()
                 }
 
 
-            } else if (key == "a20_chkbox") {
+            } else if (key == "a20_chkbox" && this->ui->a20_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a20_chkbox->isChecked());
 
-            } else if (key == "a21_chkbox") {
+            } else if (key == "a21_chkbox" && this->ui->a21_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a21_chkbox->isChecked());
 
-            } else if (key == "a22_chkbox") {
+            } else if (key == "a22_chkbox" && this->ui->a22_chkbox->isEnabled()) {
                 save_toggle_status(updates, this->ui->a22_chkbox->isChecked());
+
+            } else if (key == "a23_chkbox" && this->ui->a23_chkbox->isEnabled()) {
+                save_toggle_status(updates, this->ui->a23_chkbox->isChecked());
+
+            } else if (key == "a24_chkbox" && this->ui->a24_chkbox->isEnabled()) {
+                save_toggle_status(updates, this->ui->a24_chkbox->isChecked());
 
             }
         }
+
+        if (this->ui->limit_window_btn->isEnabled())
+            this->limitWindow->onStatusWrite(this, contentloader, exe_type);
+
     } catch (QString err) {
         QByteArray errbytes = err.toUtf8();
         QMessageBox::critical(NULL, "错误", errbytes.data(),
@@ -654,6 +733,9 @@ void MainWindow::on_saveFileBtn_clicked()
 
     QMessageBox::information(NULL, "信息", "文件保存成功。",
                              QMessageBox::Ok, QMessageBox::Ok);
+
+    if (isForcedOverride)
+        forcedOverrideButtonEnabled();
 }
 
 void MainWindow::on_a5_chkbox_stateChanged(int arg1)
@@ -680,4 +762,88 @@ void MainWindow::on_pushButton_clicked()
 {
     LicenseWindow* lw = new LicenseWindow();
     lw->show();
+}
+
+void MainWindow::forcedOverrideButtonEnabled() {
+    QVector<QAbstractButton*> togglelist;
+    togglelist.push_back(this->ui->b4_chkbox);
+    togglelist.push_back(this->ui->b5_chkbox);
+    togglelist.push_back(this->ui->b7_chkbox);
+    togglelist.push_back(this->ui->b8_chkbox);
+    togglelist.push_back(this->ui->b9_chkbox);
+    togglelist.push_back(this->ui->b10_chkbox);
+    togglelist.push_back(this->ui->b12_chkbox);
+    togglelist.push_back(this->ui->b13_chkbox);
+    togglelist.push_back(this->ui->b16_chkbox);
+    togglelist.push_back(this->ui->a2_chkbox);
+    togglelist.push_back(this->ui->a3_chkbox);
+    togglelist.push_back(this->ui->a3_togg_1);
+    togglelist.push_back(this->ui->a3_togg_2);
+    togglelist.push_back(this->ui->a3_togg_2);
+    togglelist.push_back(this->ui->a5_chkbox);
+    togglelist.push_back(this->ui->a6_chkbox);
+    togglelist.push_back(this->ui->a7_chkbox);
+    togglelist.push_back(this->ui->a8_chkbox);
+    togglelist.push_back(this->ui->a9_chkbox);
+    togglelist.push_back(this->ui->a10_chkbox);
+    togglelist.push_back(this->ui->a11_chkbox);
+    togglelist.push_back(this->ui->a12_chkbox);
+    togglelist.push_back(this->ui->a13_chkbox);
+    togglelist.push_back(this->ui->a14_chkbox);
+    togglelist.push_back(this->ui->a15_chkbox);
+    togglelist.push_back(this->ui->a19_chkbox);
+    togglelist.push_back(this->ui->a20_chkbox);
+    togglelist.push_back(this->ui->a21_chkbox);
+    togglelist.push_back(this->ui->a22_chkbox);
+    togglelist.push_back(this->ui->a23_chkbox);
+    togglelist.push_back(this->ui->a24_chkbox);
+
+    for (auto btn : togglelist) {
+        if (btn->isChecked())
+            btn->setEnabled(false);
+        else
+            btn->setEnabled(true);
+    }
+
+    // Special for togglebox
+    if (this->ui->a3_togg_1->isEnabled() || this->ui->a3_togg_2->isEnabled() || this->ui->a3_togg_3->isEnabled()) {
+        this->ui->a3_togg_1->setEnabled(true);
+        this->ui->a3_togg_2->setEnabled(true);
+        this->ui->a3_togg_3->setEnabled(true);
+    }
+}
+
+
+void MainWindow::on_limit_window_btn_clicked()
+{
+    this->limitWindow->setWindowModality(Qt::ApplicationModal);
+    this->limitWindow->show();
+}
+
+
+void MainWindow::on_btn_forced_override_clicked()
+{
+    QMessageBox message(QMessageBox::Warning, "警告",
+        "　　您正在试图进入强制覆盖模式（高级）。\n"
+        "　　强制覆盖模式下，所有未选中的勾选框都会成为可用状态。如果勾选某内容，"
+        "新功能修改的EXE字节码将会强行覆盖源文件的字节码，即使源文件字节码和修改器期望看到的字节并不相同。\n"
+        "　　强制覆盖模式下无法取消勾选源文件已包含的功能。\n"
+        "　　强制覆盖模式下，和正常模式不同，未勾选的内容将不会对EXE产生任何影响。\n"
+        "　　注意：如果正常模式下勾选框为灰色，说明该内容对应的代码段和原版并不相同，可能已被其它程序修改过，"
+        "此时再用强制覆盖模式覆盖，很可能产生意料之外的后果！\n"
+        "　　除非您很清楚您的EXE可以进行此类修改，否则强烈建议您避免使用强制覆盖模式。\n"
+        "　　进入强制覆盖模式后，无法再次回到正常模式，无法重新载入文件。\n"
+        "　　按左侧“Yes”进入强制覆盖模式，按右侧“Cancel”回到正常模式。",
+                        QMessageBox::Yes|QMessageBox::Cancel,NULL);
+    if (message.exec()==QMessageBox::Yes){
+        this->isForcedOverride = true;
+        this->ui->btn_forced_override->setText("强制覆盖模式已开启");
+        this->ui->btn_forced_override->setStyleSheet("background-color: rgba(255,0,0,200)");
+        this->ui->btn_forced_override->setEnabled(false);
+
+        this->ui->loadFileBtn->setEnabled(false);
+        this->ui->selectPathBtn->setEnabled(false);
+
+        forcedOverrideButtonEnabled();
+    }
 }

@@ -66,6 +66,12 @@ ContentLoader::ContentLoader()
                 int length = line.split(",")[1].toInt();
                 current_updates.push_back(Update(address, length));
 
+            } else if (line.contains('*')) {
+                int address = line.split("*")[0].toInt(&ok, 16);
+                int length = line.split("*")[1].toInt();
+                int value_added = line.split("*")[2].toInt(&ok, 16);
+                current_updates.push_back(Update(address, length, value_added));
+
             } else if (line.contains(':')) {
                 int address = line.split(":")[0].toInt(&ok, 16);
 

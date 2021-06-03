@@ -25,7 +25,23 @@ public:
 private:
     Ui::LicenseWindow *ui;
     const QString licenseText =
-R"~(
+R"~(Copyright (C) 2021 Kunpeng Zhou
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+作者：远帆97 版权所有。
+此程序是自由软件：您可以根据自由软件基金会发布的GNU通用公共许可证的条款（许可证的第3版或（由您选择）任何更高版本）重新分发和/或修改它。本程序分发的目的是希望它有用，但不提供任何担保，也不隐含任何对于特定用途的适销性或适用性的担保。有关更多详细信息，请参阅GNU通用公共许可证。
+
+如有疑问，可以在百度贴吧 @远帆97 ，访问百度贴吧 三国群英2吧，加贴吧官方QQ群 705400330 ，或关注微信公众号 三国群英传二 。
+
+
     GNU GENERAL PUBLIC LICENSE
     Version 3, 29 June 2007
 

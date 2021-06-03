@@ -9,7 +9,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QAbstractButton>
+#include <QLineEdit>
 #include "contentloader.h"
+#include "limitwindow.h"
+
+class LimitWindow;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,6 +27,14 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+    int load_value_status(const Update& update);
+    int load_toggle_status(const QVector<Update>& updates);
+    void load_toggle_box(QAbstractButton* box, const QVector<Update>& updates);
+
+    void save_value_status(const QVector<Update>& updates, int value);
+    void save_value_status(const QVector<Update>& updates, QString value);
+    void save_toggle_status(const QVector<Update>& updates, bool toggled);
 
 private slots:
     void on_selectPathBtn_clicked();
@@ -36,8 +49,14 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_btn_forced_override_clicked();
+
+    void on_limit_window_btn_clicked();
+
 private:
     Ui::MainWindow *ui;
+
+    LimitWindow* limitWindow;
 
     QString filepath;
     char* content;
@@ -47,13 +66,11 @@ private:
 
     QVector<Update> cheatcodes;
 
-    int load_value_status(const Update& update);
-    bool load_toggle_status(const QVector<Update>& updates);
+    bool isForcedOverride = false;
+
     void load_status();
 
-    void save_value_status(const QVector<Update>& updates, int value);
-    void save_value_status(const QVector<Update>& updates, QString value);
-    void save_toggle_status(const QVector<Update>& updates, bool toggled);
+    void forcedOverrideButtonEnabled();
 
 };
 #endif // MAINWINDOW_H

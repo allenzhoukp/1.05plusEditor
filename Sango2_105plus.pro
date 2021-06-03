@@ -18,16 +18,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     contentloader.cpp \
     licensewindow.cpp \
+    limitwindow.cpp \
     main.cpp \
     mainwindow.cpp
 
 HEADERS += \
     contentloader.h \
     licensewindow.h \
+    limitwindow.h \
     mainwindow.h
 
 FORMS += \
     licensewindow.ui \
+    limitwindow.ui \
     mainwindow.ui
 
 # Default rules for deployment.
@@ -36,3 +39,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES +=
+
+RC_ICONS += ico2.ico

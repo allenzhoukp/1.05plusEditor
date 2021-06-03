@@ -6,27 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>860</width>
-    <height>791</height>
+    <width>870</width>
+    <height>830</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>860</width>
-    <height>791</height>
+    <width>870</width>
+    <height>830</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>860</width>
-    <height>791</height>
+    <width>1280</width>
+    <height>1000</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>三国群英传2 1.05+ 修改器</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_4">
+   <layout class="QVBoxLayout" name="verticalLayout_6">
     <item>
      <widget class="QGroupBox" name="groupBox">
       <property name="title">
@@ -84,233 +84,250 @@
      </widget>
     </item>
     <item>
-     <spacer name="horizontalSpacer">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>40</width>
-        <height>20</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
      <layout class="QHBoxLayout" name="horizontalLayout_5">
       <item>
-       <widget class="QGroupBox" name="groupBox_2">
-        <property name="title">
-         <string>本体修改内容</string>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <layout class="QVBoxLayout" name="verticalLayout_5">
+        <item>
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string>本体修改内容</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
            <item>
-            <widget class="QLabel" name="label">
-             <property name="toolTip">
-              <string>&lt;p&gt;设置体力上限。&lt;/p&gt;</string>
-             </property>
-             <property name="text">
-              <string>1. HP上限</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="b1_1_box"/>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_2">
-             <property name="toolTip">
-              <string>&lt;p&gt;设置技力上限。&lt;/p&gt;</string>
-             </property>
-             <property name="text">
-              <string>MP上限</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="b1_2_box"/>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <item>
-            <widget class="QLabel" name="label_3">
-             <property name="toolTip">
-              <string>&lt;p&gt;设置电脑出兵时一支队伍中的武将数量上限。分为4种情况，可以分别设置。&lt;/p&gt;</string>
-             </property>
-             <property name="text">
-              <string>2. AI每支队伍出征人数上限</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QGridLayout" name="gridLayout">
-             <item row="0" column="3">
-              <widget class="QLineEdit" name="b2_1_box"/>
-             </item>
-             <item row="1" column="0">
-              <widget class="QLabel" name="label_6">
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="toolTip">
+                <string>&lt;p&gt;设置体力上限。&lt;/p&gt;</string>
+               </property>
                <property name="text">
-                <string>单城两队进攻</string>
+                <string>1. HP上限</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="4">
-              <widget class="QLabel" name="label_5">
+             <item>
+              <widget class="QLineEdit" name="b1_1_box"/>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="toolTip">
+                <string>&lt;p&gt;设置技力上限。&lt;/p&gt;</string>
+               </property>
                <property name="text">
-                <string>占空城</string>
+                <string>MP上限</string>
                </property>
               </widget>
              </item>
-             <item row="0" column="0">
-              <widget class="QLabel" name="label_4">
-               <property name="text">
-                <string>单城一队进攻</string>
-               </property>
-              </widget>
-             </item>
-             <item row="0" column="5">
-              <widget class="QLineEdit" name="b2_2_box"/>
-             </item>
-             <item row="1" column="3">
-              <widget class="QLineEdit" name="b2_3_box"/>
-             </item>
-             <item row="1" column="4">
-              <widget class="QLabel" name="label_7">
-               <property name="text">
-                <string>双城夹攻</string>
-               </property>
-              </widget>
-             </item>
-             <item row="1" column="5">
-              <widget class="QLineEdit" name="b2_4_box"/>
+             <item>
+              <widget class="QLineEdit" name="b1_2_box"/>
              </item>
             </layout>
            </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout">
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="toolTip">
+                <string>&lt;p&gt;设置电脑出兵时一支队伍中的武将数量上限。分为4种情况，可以分别设置。&lt;/p&gt;</string>
+               </property>
+               <property name="text">
+                <string>2. AI每支队伍出征人数上限</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QGridLayout" name="gridLayout">
+               <item row="0" column="3">
+                <widget class="QLineEdit" name="b2_1_box"/>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>单城两队进攻</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="4">
+                <widget class="QLabel" name="label_5">
+                 <property name="text">
+                  <string>占空城</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>单城一队进攻</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="5">
+                <widget class="QLineEdit" name="b2_2_box"/>
+               </item>
+               <item row="1" column="3">
+                <widget class="QLineEdit" name="b2_3_box"/>
+               </item>
+               <item row="1" column="4">
+                <widget class="QLabel" name="label_7">
+                 <property name="text">
+                  <string>双城夹攻</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="5">
+                <widget class="QLineEdit" name="b2_4_box"/>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="b4_chkbox">
+             <property name="toolTip">
+              <string>&lt;p&gt;修复原版减缓集气和快速集气（初中高）这6个军师技无效的问题。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>4. 修复减缓快速无效</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="b5_chkbox">
+             <property name="toolTip">
+              <string>&lt;p&gt;修复恢复技力（中）和恢复技力（初）速度完全相同的问题。恢复技力（中）的速度将被正确地设置为1回合恢复1点技力。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>5. 修复恢复技力（中）</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="b7_chkbox">
+             <property name="toolTip">
+              <string>&lt;p&gt;恶性BUG修复。原版1.05如果在野外触发战斗，战胜并招降电脑武将，但该队伍的出发城池为空城，则这些被招降的武将会消失；如果单击该城池，则可能会跳出游戏。修复该BUG后，这些武将会正确地进城。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>7. 修复空城招降</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="b8_chkbox">
+             <property name="toolTip">
+              <string>&lt;p&gt;使用后，在32位色环境下也可以窗口化，无需（也不应）设置16位色。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>8. 32位窗口化</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="b9_chkbox">
+             <property name="toolTip">
+              <string>&lt;p&gt;可以播放游戏路径下MP3文件夹内，MP3格式的音乐。使用后，设定选项中调整音效音量等价于调整主音量，但可单独调整音乐音量。Steam版不播放MP3格式的音乐，因此不适用。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>9. 播放MP3格式音乐</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="b10_chkbox">
+             <property name="toolTip">
+              <string>&lt;p&gt;原版下，如果在游戏进行到一半时，点“回主选单”回到开始界面，再选择时期开一局新的进程，则无法搜出上一个进程中已经被搜出的唯一物品。选中后，这些物品在任意方式开始的进程中，都可以被且仅被搜出一次。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>10. 修复唯一物品重开游戏时无法搜到</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="b12_chkbox">
+             <property name="toolTip">
+              <string>&lt;p&gt;使用后，可以使用S#调整游戏速度，如输入键盘上S2即为2倍速。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>12. 使用S#调整游戏速度</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="b13_chkbox">
+             <property name="toolTip">
+              <string>&lt;p&gt;方便MOD制作者：和脚本（SO文件）相关的一系列支持性修改，可以支持内存操作、伏兵高级兵、INI调用脚本等。Steam版暂不适用。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>13-15. 脚本支持</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="b16_chkbox">
+             <property name="toolTip">
+              <string>&lt;p&gt;方便MOD制作者：防止部队武将数大于城市容纳数而城市为空城时，选择武将进城的bug。原版由于最低城容和队伍人数上限均为5人，不存在此问题，制作MOD时可能会碰到。&lt;/p&gt;</string>
+             </property>
+             <property name="text">
+              <string>16. 空城进入城内超员弹出BUG修复</string>
+             </property>
+            </widget>
+           </item>
           </layout>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="b4_chkbox">
-           <property name="toolTip">
-            <string>&lt;p&gt;修复原版减缓集气和快速集气（初中高）这6个军师技无效的问题。&lt;/p&gt;</string>
-           </property>
-           <property name="text">
-            <string>4. 修复减缓快速无效</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="b5_chkbox">
-           <property name="toolTip">
-            <string>&lt;p&gt;修复恢复技力（中）和恢复技力（初）速度完全相同的问题。恢复技力（中）的速度将被正确地设置为1回合恢复1点技力。&lt;/p&gt;</string>
-           </property>
-           <property name="text">
-            <string>5. 修复恢复技力（中）</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="b7_chkbox">
-           <property name="toolTip">
-            <string>&lt;p&gt;恶性BUG修复。原版1.05如果在野外触发战斗，战胜并招降电脑武将，但该队伍的出发城池为空城，则这些被招降的武将会消失；如果单击该城池，则可能会跳出游戏。修复该BUG后，这些武将会正确地进城。&lt;/p&gt;</string>
-           </property>
-           <property name="text">
-            <string>7. 修复空城招降</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="b8_chkbox">
-           <property name="toolTip">
-            <string>&lt;p&gt;使用后，在32位色环境下也可以窗口化，无需（也不应）设置16位色。&lt;/p&gt;</string>
-           </property>
-           <property name="text">
-            <string>8. 32位窗口化</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="b9_chkbox">
-           <property name="toolTip">
-            <string>&lt;p&gt;可以播放游戏路径下MP3文件夹内，MP3格式的音乐。使用后，设定选项中调整音效音量等价于调整主音量，但可单独调整音乐音量。Steam版不播放MP3格式的音乐，因此不适用。&lt;/p&gt;</string>
-           </property>
-           <property name="text">
-            <string>9. 播放MP3格式音乐</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="b10_chkbox">
-           <property name="toolTip">
-            <string>&lt;p&gt;原版下，如果在游戏进行到一半时，点“回主选单”回到开始界面，再选择时期开一局新的进程，则无法搜出上一个进程中已经被搜出的唯一物品。选中后，这些物品在任意方式开始的进程中，都可以被且仅被搜出一次。&lt;/p&gt;</string>
-           </property>
-           <property name="text">
-            <string>10. 修复唯一物品重开游戏时无法搜到</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="b12_chkbox">
-           <property name="toolTip">
-            <string>&lt;p&gt;使用后，可以使用S#调整游戏速度，如输入键盘上S2即为2倍速。&lt;/p&gt;</string>
-           </property>
-           <property name="text">
-            <string>12. 使用S#调整游戏速度</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="b13_chkbox">
-           <property name="toolTip">
-            <string>&lt;p&gt;方便MOD制作者：和脚本（SO文件）相关的一系列支持性修改，可以支持内存操作、伏兵高级兵、INI调用脚本等。Steam版暂不适用。&lt;/p&gt;</string>
-           </property>
-           <property name="text">
-            <string>13-15. 脚本支持</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="b16_chkbox">
-           <property name="toolTip">
-            <string>&lt;p&gt;方便MOD制作者：防止部队武将数大于城市容纳数而城市为空城时，选择武将进城的bug。原版由于最低城容和队伍人数上限均为5人，不存在此问题，制作MOD时可能会碰到。&lt;/p&gt;</string>
-           </property>
-           <property name="text">
-            <string>16. 空城进入城内超员弹出BUG修复</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_13">
-           <property name="text">
-            <string>鼠标移到文本上可查看说明。</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_14">
-           <property name="text">
-            <string>修改有风险，请注意备份。保存时备份文件会自动生成。</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+         </widget>
+        </item>
+        <item>
+         <widget class="Line" name="line">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_4">
+          <property name="title">
+           <string>附加内容II（可选功能）</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <widget class="QPushButton" name="limit_window_btn">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>各类上限破解（暂未支持）</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_13">
+          <property name="text">
+           <string>鼠标移到文本上可查看说明。</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="label_14">
+          <property name="text">
+           <string>修改有风险，请注意备份。保存时备份文件会自动生成。</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
       </item>
       <item>
        <widget class="QGroupBox" name="groupBox_3">
@@ -633,17 +650,64 @@
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QCheckBox" name="a23_chkbox">
+           <property name="toolTip">
+            <string>&lt;p&gt;使用后，在战场选将界面，可以在DALL作弊码开启下按F3切换敌方当前出阵武将所选择的阵型。&lt;/p&gt;</string>
+           </property>
+           <property name="text">
+            <string>A23. DALL+F3切换电脑方阵型</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="a24_chkbox">
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;原版劝降要求我方武将节操小于6且忠诚小于90。本修改将条件改为敌方武将节操小于6且忠诚小于90。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="text">
+            <string>A24. 修改劝降条件为判断敌方节操和忠诚</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </widget>
       </item>
      </layout>
     </item>
-    <item alignment="Qt::AlignRight">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>协议</string>
-      </property>
-     </widget>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_7">
+      <item>
+       <widget class="QPushButton" name="btn_forced_override">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="text">
+         <string>进入强制覆盖模式（高级）</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>声明</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -652,7 +716,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>860</width>
+     <width>870</width>
      <height>26</height>
     </rect>
    </property>
