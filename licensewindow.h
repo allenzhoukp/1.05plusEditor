@@ -42,6 +42,12 @@ GNU General Public License for more details.
 如有疑问，可以在百度贴吧 @远帆97 ，访问百度贴吧 三国群英2吧，加贴吧官方QQ群 705400330 ，或关注微信公众号 三国群英传二 。
 
 
+
+You can download the source code of this program at the following link.
+本程序的源码见 https://github.com/allenzhoukp/1.05plusEditor
+
+
+
     GNU GENERAL PUBLIC LICENSE
     Version 3, 29 June 2007
 
