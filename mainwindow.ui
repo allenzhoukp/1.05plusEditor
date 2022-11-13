@@ -293,7 +293,7 @@
               <bool>false</bool>
              </property>
              <property name="text">
-              <string>各类上限破解（暂未支持）</string>
+              <string>各类上限破解（暂未开放）</string>
              </property>
             </widget>
            </item>
@@ -408,6 +408,13 @@
            <item>
             <widget class="QLineEdit" name="a4_box"/>
            </item>
+           <item>
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>（上限为127）            </string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
          <item>
@@ -476,15 +483,26 @@
            </item>
           </layout>
          </item>
-         <item alignment="Qt::AlignRight">
-          <widget class="QCheckBox" name="a5_chkbox">
-           <property name="toolTip">
-            <string>&lt;p&gt;选中此项则电脑之间必定假打。&lt;p&gt;</string>
-           </property>
-           <property name="text">
-            <string>必定假打</string>
-           </property>
-          </widget>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QLabel" name="label_16">
+             <property name="text">
+              <string>   （必定真打请在上框填入1）        </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="a5_chkbox">
+             <property name="toolTip">
+              <string>&lt;p&gt;选中此项则电脑之间必定假打。&lt;p&gt;</string>
+             </property>
+             <property name="text">
+              <string>必定假打</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
           <widget class="QCheckBox" name="a6_chkbox">
@@ -552,17 +570,17 @@
             <string>&lt;p&gt;使用后，可以在大地图上按P键暂停时间流逝，同时仍可以操作部队。按O键恢复时间流逝。注意：当大地图时间冻结下发生空城招降时，应避免立即操作即将立刻占领空城的部队，否则会产生BUG。&lt;/p&gt;</string>
            </property>
            <property name="text">
-            <string>A12. 大地图时间冻结</string>
+            <string>A12. 大地图时间冻结（按P冻结，按O恢复）</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="a13_chkbox">
            <property name="toolTip">
-            <string>&lt;p&gt;修正后，必须重新玩过的剧本才会有效果。指定了情义君主的武将，当其情义君主未灭亡时，只有其情义君主才可以搜索到该武将；情义君主招降该武将必定成功，其他势力招降该武将的难度增大。当情义君主变成了普通武将或被斩首之后，其他势力还是可以往常搜索，并且有机会加入该武将；情义君主归降的新君主招降和搜索该武将时必定成功。&lt;/p&gt;</string>
+            <string>&lt;p&gt;注意：开启此项会使得部分武将极难投降，除非其君主灭亡。修正后，必须重新玩过的剧本才会有效果。指定了情义君主的武将，当其情义君主未灭亡时，只有其情义君主才可以搜索到该武将；情义君主招降该武将必定成功，其他势力招降该武将的难度增大。当情义君主变成了普通武将或被斩首之后，其他势力还是可以往常搜索，并且有机会加入该武将；情义君主归降的新君主招降和搜索该武将时必定成功。&lt;/p&gt;</string>
            </property>
            <property name="text">
-            <string>A13. 修复情义君主设定（LOYALKING）</string>
+            <string>A13. 【谨慎开启】启动情义君主（LOYALKING）设定</string>
            </property>
           </widget>
          </item>
@@ -699,6 +717,13 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_17">
+        <property name="text">
+         <string>v2022.10.2</string>
+        </property>
+       </widget>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton">

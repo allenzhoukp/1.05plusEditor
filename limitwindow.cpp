@@ -36,7 +36,7 @@ void LimitWindow::loadContent(char *content) {
     }
 }
 
-void LimitWindow::addNewHeader(int addr, int size) {
+void LimitWindow::addNewHeader(MainWindow* mainwindow, int addr, int size) {
 
     // if there has already been a header named .s105p, we just modify it
     PIMAGE_SECTION_HEADER pNewSection = nullptr;
@@ -53,7 +53,7 @@ void LimitWindow::addNewHeader(int addr, int size) {
     strcpy(pNewSection->Name, ".s105p");    // name
     pNewSection->VirtualAddress = addr - 0x400000;  // RVA
     pNewSection->Misc.VirtualSize = size;   // virtual size
-    pNewSection->SizeOfRawData = 0;         // no raw data
+    pNewSection->SizeOfRawData = 0;         // no physical data
     PIMAGE_SECTION_HEADER pOldSec = &pSections[file_header->NumberOfSections - 1];
     pNewSection->PointerToRawData = pOldSec->PointerToRawData + pOldSec->SizeOfRawData;
 
@@ -67,6 +67,12 @@ void LimitWindow::addNewHeader(int addr, int size) {
             max = pSections[i].VirtualAddress + pSections[i].Misc.VirtualSize;
     }
     optional_header->SizeOfImage = max;
+
+    // append zeros to the end of file (not necessary)
+    //    mainwindow->append_file_length = size;
+
+    // Make sure that the sectors are consecutive...
+    pOldSec->Misc.VirtualSize = pNewSection->VirtualAddress - pOldSec->VirtualAddress;
 
 }
 
@@ -257,7 +263,7 @@ void LimitWindow::onStatusWrite(MainWindow* mainwindow, ContentLoader& contentlo
             if (!ok)
                 throw QString("各类上限破解 - 新区段大小不合法");
 
-            addNewHeader(newsec_addr, newsec_size);
+            addNewHeader(mainwindow, newsec_addr, newsec_size);
         }
     }
 }

@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     content = nullptr;
     file_length = 0;
+//    append_file_length = 0;
     filepath= "/";
 
     this->limitWindow = new LimitWindow();
@@ -167,7 +168,7 @@ void MainWindow::on_loadFileBtn_clicked()
         this->ui->a22_chkbox->setEnabled(true);
         this->ui->a23_chkbox->setEnabled(true);
         this->ui->a24_chkbox->setEnabled(true);
-        // this->ui->limit_window_btn->setEnabled(true);
+        this->ui->limit_window_btn->setEnabled(true);
         break;
 
     case ExeType::steam_simp105:
@@ -724,6 +725,10 @@ void MainWindow::on_saveFileBtn_clicked()
     FILE* foutput = fopen(file_name, "wb");
     if (foutput != nullptr) {
         fwrite(this->content, 1, this->file_length, foutput);
+        //        char* zeros = new char[this->append_file_length];
+        //        memset(zeros, 0, this->append_file_length);
+        //        fwrite(zeros, 1, this->append_file_length, foutput);
+        //        delete[] zeros;
         fclose(foutput);
     } else {
         QMessageBox::critical(NULL, "错误", "文件保存失败。",

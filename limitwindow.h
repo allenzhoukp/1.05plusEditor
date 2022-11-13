@@ -22,7 +22,7 @@ public:
     Ui::LimitWindow *ui;
 
     void loadContent(char* content);
-    void addNewHeader(int addr, int size);
+    void addNewHeader(MainWindow* mainwindow, int addr, int size);
     void onStatusLoad(MainWindow* mainwindow, ContentLoader& contentloader, ExeType exe_type);
     void onStatusWrite(MainWindow* mainwindow, ContentLoader& contentloader, ExeType exe_type);
 
